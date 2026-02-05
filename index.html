@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Anime Memories - Home</title>
+    <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading your memories...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1><i class="fas fa-film"></i> Anime Memories</h1>
+                <p class="subtitle">Never forget your favorite titles again</p>
+            </div>
+            
+            <!-- User ID Section -->
+            <div class="user-section">
+                <div class="user-input">
+                    <input type="password" id="userId" placeholder="Enter User ID (*****)">
+                    <button onclick="login()" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+                <div class="database-status">
+                    <span id="db-status" class="offline">● Offline</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="anime.html"><i class="fas fa-tv"></i> Anime</a></li>
+                <li><a href="manga.html"><i class="fas fa-book"></i> Manga</a></li>
+                <li><a href="manhwa.html"><i class="fas fa-paint-brush"></i> Manhwa</a></li>
+            </ul>
+        </nav>
+
+        <!-- Dashboard -->
+        <main class="dashboard">
+            <div class="welcome-section">
+                <h2>Welcome to Your Anime Memories!</h2>
+                <p>Track all your anime, manga, and manhwa in one place.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3><i class="fas fa-tv"></i> Anime</h3>
+                    <p id="anime-count">0 Titles</p>
+                    <div class="stat-details">
+                        <span>Watching: <span id="anime-watching">0</span></span>
+                        <span>Plan: <span id="anime-plan">0</span></span>
+                        <span>Dropped: <span id="anime-dropped">0</span></span>
+                        <span>Completed: <span id="anime-completed">0</span></span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3><i class="fas fa-book"></i> Manga</h3>
+                    <p id="manga-count">0 Titles</p>
+                    <div class="stat-details">
+                        <span>Reading: <span id="manga-reading">0</span></span>
+                        <span>Plan: <span id="manga-plan">0</span></span>
+                        <span>Dropped: <span id="manga-dropped">0</span></span>
+                        <span>Completed: <span id="manga-completed">0</span></span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3><i class="fas fa-paint-brush"></i> Manhwa</h3>
+                    <p id="manhwa-count">0 Titles</p>
+                    <div class="stat-details">
+                        <span>Reading: <span id="manhwa-reading">0</span></span>
+                        <span>Plan: <span id="manhwa-plan">0</span></span>
+                        <span>Dropped: <span id="manhwa-dropped">0</span></span>
+                        <span>Completed: <span id="manhwa-completed">0</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Overview -->
+            <div class="status-overview">
+                <h3><i class="fas fa-chart-pie"></i> Status Overview</h3>
+                <div class="status-grid">
+                    <div class="status-item status-watching">
+                        <i class="fas fa-eye"></i>
+                        <div class="status-info">
+                            <span class="status-count" id="count-watching">0</span>
+                            <span class="status-label">Watching/Reading</span>
+                        </div>
+                    </div>
+                    <div class="status-item status-plan">
+                        <i class="fas fa-calendar-check"></i>
+                        <div class="status-info">
+                            <span class="status-count" id="count-plan">0</span>
+                            <span class="status-label">Plan to Watch/Read</span>
+                        </div>
+                    </div>
+                    <div class="status-item status-dropped">
+                        <i class="fas fa-ban"></i>
+                        <div class="status-info">
+                            <span class="status-count" id="count-dropped">0</span>
+                            <span class="status-label">Dropped</span>
+                        </div>
+                    </div>
+                    <div class="status-item status-completed">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="status-info">
+                            <span class="status-count" id="count-completed">0</span>
+                            <span class="status-label">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button onclick="window.location.href='anime.html'" class="action-btn">
+                        <i class="fas fa-plus"></i> Add New Anime
+                    </button>
+                    <button onclick="window.location.href='manga.html'" class="action-btn">
+                        <i class="fas fa-plus"></i> Add New Manga
+                    </button>
+                    <button onclick="window.location.href='manhwa.html'" class="action-btn">
+                        <i class="fas fa-plus"></i> Add New Manhwa
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Additions -->
+            <div class="recent-section">
+                <h3>Recently Added</h3>
+                <div id="recent-list" class="recent-list">
+                    <p class="empty-message">No items added yet. Start by adding your first title!</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="developer-info">
+                    <h4>About Developer</h4>
+                    <p><i class="fas fa-user"></i> Mark Joseph Rogasan</p>
+                    <p><i class="fas fa-code"></i> Full Stack Developer</p>
+                </div>
+                <div class="footer-note">
+                    <p>This website helps you organize and remember all your anime, manga, and manhwa memories.</p>
+                    <p>Built with ❤️ for anime enthusiasts</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="main.js"></script>
+    <script src="database.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.display = 'none';
+                document.querySelector('.container').style.display = 'block';
+                checkDatabaseStatus();
+                loadAllItems();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
